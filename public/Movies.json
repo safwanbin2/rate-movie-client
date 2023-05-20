@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Spider Man home coming",
+        "banner": "https://i.pinimg.com/736x/42/d7/be/42d7beeaf3251080f7df2c6532ab3f57.jpg",
+        "category": "action",
+        "description": "Bitten by a radioactive spider, Peter Parker's arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles. With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man.",
+        "trailerLink": "https://www.youtube.com/embed/rk-dF1lIbIg",
+        "duration": "2.43",
+        "releaseDate": "34893",
+        "actors": ["Monu", "marry janes", "Peter Parker", "Zendaya"]
+    },
+    {
+        "title": "Super Man Home Leaving",
+        "banner": "https://nationaltoday.com/wp-content/uploads/2022/05/63-Superman-Day.jpg",
+        "category": "fictional",
+        "description": "Superhuman strength, super speed, stamina and invulnerability, freezing breath, super hearing, multiple extrasensory and vision powers, longevity, flight, and regeneration. Superman is a fictional character and one of the most famous and popular comic book superheroes of all time.",
+        "trailerLink": "https://www.youtube.com/embed/T6DJcgm3wNY",
+        "duration": "2.3",
+        "releaseDate": "34893",
+        "actors": ["Monu", "marry janes", "Peter Parker", "Zendaya"]
+    },
+    {
+        "title": "BatMan going bad",
+        "banner": "https://www.gannett-cdn.com/presto/2022/02/25/NABJ/70b55fd7-6a86-4fb3-b1e0-aba8416de15a-BatmanII.jpeg?crop=7951,4473,x0,y405&width=3200&height=1801&format=pjpg&auto=webp",
+        "category": "action",
+        "description": "Batman was originally introduced as a ruthless vigilante who frequently killed or maimed criminals, but evolved into a character with a stringent moral code and strong sense of justice. Unlike most superheroes, Batman does not possess any superpowers, instead relying on his intellect, fighting skills, and wealth.",
+        "trailerLink": "https://www.youtube.com/embed/mqqft2x_Aa4",
+        "duration": "2.4",
+        "releaseDate": "34893",
+        "actors": ["Monu", "marry janes", "Peter Parker", "Zendaya"]
+    },
+    {
+        "title": "Breaking Bad",
+        "banner": "https://occ-0-64-1433.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbFI2wcwiGkHDdGWaw58hWgLETOBsbqqv6GbKnZFn3s_Y4fjw0Ys9DNYD5txnfV3oj9tgsBeaSnPcBOwQqQnpHVqHeQr9FtvVzaL.jpg?r=776",
+        "category": "adventure",
+        "description": "Set in Albuquerque, New Mexico, between 2008 and 2010, Breaking Bad follows Walter White, a struggling, frustrated high school chemistry teacher who transforms into a ruthless kingpin in the local methamphetamine drug trade, driven to financially provide for his family after being diagnosed with inoperable lung cancer.",
+        "trailerLink": "https://www.youtube.com/embed/HhesaQXLuRY",
+        "duration": "12.20",
+        "releaseDate": "34893",
+        "actors": ["Monu", "marry janes", "Peter Parker", "Zendaya"]
+    },
+    {
+        "title": "Pirates of the caribean",
+        "banner": "https://i.pinimg.com/736x/42/d7/be/42d7beeaf3251080f7df2c6532ab3f57.jpg",
+        "category": "adventure",
+        "description": "The story follows pirate Jack Sparrow (Johnny Depp) and blacksmith Will Turner (Orlando Bloom) as they rescue the kidnapped Elizabeth Swann (Keira Knightley) from the cursed crew of the Black Pearl, captained by Hector Barbossa (Geoffrey Rush), who become undead skeletons in moonlight.",
+        "trailerLink": "https://www.youtube.com/embed/Hgeu5rhoxxY",
+        "duration": "7.40",
+        "releaseDate": "34893",
+        "actors": ["Monu", "marry janes", "Peter Parker", "Zendaya"]
+    }
+]
