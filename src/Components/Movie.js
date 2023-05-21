@@ -56,6 +56,8 @@ const Movie = () => {
                     {reviews.length ? <>{reviews.map(review => <Review
                         key={review._id}
                         review={review}
+                        refetch={refetch}
+                        setRefetch={setRefetch}
                     />)}</> : ""}
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 
-const Review = ({ review }) => {
+const Review = ({ review, setRefetch, refetch }) => {
     const { user } = useContext(AuthContext);
     const { comment, reviewDate, stars, userName, userEmail, userPhoto, _id } = review;
     const showStars = amount => {
@@ -20,7 +20,8 @@ const Review = ({ review }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                data.acknowledged ? toast.success("Liked") : toast.error("failed to like")
+                toast.success(data.message);
+                setRefetch(!refetch);
             })
             .catch(err => {
                 console.error(err);
@@ -44,9 +45,9 @@ const Review = ({ review }) => {
             <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed on : <time>{reviewDate.slice(0, 10)}</time></p></footer>
             <p className="mb-2 text-gray-500 dark:text-gray-400">{comment}</p>
             <aside>
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">19 people found this helpful</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{review?.foundHelpful.length ? `${review.foundHelpful.length} people found this helpful` : ``}</p>
                 <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
-                    <button onClick={() => handleHelpful(_id, user.email)} className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</button>
+                    <button onClick={() => handleHelpful(_id, user?.email)} className={`${review?.foundHelpful.includes(user?.email) ? "bg-blue-700 hover:bg-blue-600 text-white border-white" : "bg-white text-gray-900 hover:bg-gray-100 border-gray-300"} border  focus:outline-none  focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700`}>Helpful</button>
                     <a href="#" className="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
                 </div>
             </aside>

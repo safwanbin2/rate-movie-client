@@ -8,6 +8,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Movie from "../Components/Movie";
 import MyReviews from "../Pages/MyReviews/MyReviews";
+import AdminLayout from "../Layouts/AdminLayout";
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,14 @@ export const router = createBrowserRouter([
                 path: "/myreviews",
                 element: <MyReviews />
             }
+        ]
+    },
+    {
+        path: "/admin",
+        element: <AdminLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            
         ]
     }
 ])
