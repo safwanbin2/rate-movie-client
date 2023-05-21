@@ -9,6 +9,8 @@ import Contact from "../Pages/Contact/Contact";
 import Movie from "../Components/Movie";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import AdminLayout from "../Layouts/AdminLayout";
+import Admins from "../Pages/Admin/Users/Admins";
+import Fans from "../Pages/Admin/Users/Fans";
 
 export const router = createBrowserRouter([
     {
@@ -48,11 +50,22 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: "/admin",
+        path: "/admin/dashboard",
         element: <AdminLayout />,
         errorElement: <ErrorPage />,
         children: [
-            
+            {
+                path: "/admin/dashboard",
+                element: <Admins />
+            },
+            {
+                path: "/admin/dashboard/admins",
+                element: <Admins />
+            },
+            {
+                path: "/admin/dashboard/fans",
+                element: <Fans />
+            }
         ]
     }
 ])
