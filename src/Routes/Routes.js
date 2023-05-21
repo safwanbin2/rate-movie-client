@@ -11,6 +11,7 @@ import MyReviews from "../Pages/MyReviews/MyReviews";
 import AdminLayout from "../Layouts/AdminLayout";
 import Admins from "../Pages/Admin/Users/Admins";
 import Fans from "../Pages/Admin/Users/Fans";
+import Movies from "../Pages/Admin/Movies/Movies";
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path: "/admin/dashboard/fans",
                 element: <Fans />
+            },
+            {
+                path: "/admin/dashboard/movies/all",
+                element: <Movies />
             }
         ]
     }

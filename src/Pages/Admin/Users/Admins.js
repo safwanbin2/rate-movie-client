@@ -1,11 +1,56 @@
 import React from 'react';
 import TableUser from '../../../Components/AdminComponents/TableUser';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../Components/Loading';
 
 const Admins = () => {
+    const { data: admins, isLoading } = useQuery({
+        queryKey: ["role"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users/list?role=admin`);
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    if (isLoading) {
+        return <Loading />
+    }
+    console.log(admins)
     return (
         <div>
-            <h2 className='text-xl font-semibold my-6'>Admins that manage this websitel Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui, dicta. Tempore unde nulla dicta quaerat perferendis explicabo odio asperiores consequatur atque. Cum, id dolores. Optio minus ratione doloribus vero eius ea impedit nesciunt, earum iste, consectetur distinctio temporibus voluptatem amet repellat recusandae? Doloribus at nulla suscipit neque cumque modi, nihil dignissimos iusto aliquid quo? At dignissimos nam illum sit quam quia dicta alias fugiat aliquid quidem delectus itaque enim quas cumque ipsa ipsam qui laudantium mollitia, nemo iure optio earum! Maiores iure, consectetur voluptate accusantium architecto ut molestias cumque a, similique sequi ipsum ratione voluptates ipsa! Maiores aut odio deserunt. </h2>
-            <TableUser />
+            <h2 className='text-xl font-semibold my-6'>Admins that manage this website : </h2>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="flex items-center justify-between py-4 bg-white dark:bg-gray-800">
+
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Role
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Creation
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                admins.map(admin => <TableUser
+                                    key={admin._id}
+                                    user={admin}
+                                />)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };

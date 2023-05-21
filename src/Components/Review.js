@@ -28,6 +28,13 @@ const Review = ({ review, setRefetch, refetch }) => {
             })
     }
 
+    const handleDeleteReview = id => {
+        const consent = window.confirm("Are you sure you want to delete the review?");
+        if (consent) {
+            console.log(id)
+        }
+    }
+
     return (
         <article className='my-6 py-2'>
             <div className="flex items-center mb-4 space-x-4">
@@ -48,7 +55,10 @@ const Review = ({ review, setRefetch, refetch }) => {
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{review?.foundHelpful.length ? `${review.foundHelpful.length} people found this helpful` : ``}</p>
                 <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
                     <button onClick={() => handleHelpful(_id, user?.email)} className={`${review?.foundHelpful.includes(user?.email) ? "bg-blue-700 hover:bg-blue-600 text-white border-white" : "bg-white text-gray-900 hover:bg-gray-100 border-gray-300"} border  focus:outline-none  focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700`}>Helpful</button>
-                    <a href="#" className="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
+                    <a href="/" className="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
+                    <div className='pl-2 flex items-center'>
+                        <button onClick={() => handleDeleteReview(_id)} type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-2 py-1 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete Review</button>
+                    </div>
                 </div>
             </aside>
         </article>

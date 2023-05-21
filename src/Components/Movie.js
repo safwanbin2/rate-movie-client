@@ -11,7 +11,7 @@ const Movie = () => {
     const { actors, banner, category, description, duration, releaseDate, title, trailerLink, _id } = movie;
     const [reviews, setReviews] = useState({});
     const [refetch, setRefetch] = useState(false);
-
+    
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
@@ -60,6 +60,7 @@ const Movie = () => {
                         setRefetch={setRefetch}
                     />)}</> : ""}
                 </div>
+
             </div>
             <div>
                 <h2 className='text-xl font-semibold tracking-wider  mb-2'>Similar Movies: </h2>
