@@ -126,7 +126,7 @@ const AdminLayout = () => {
                 </div>
             </aside>
             {/* display */}
-            <div className='mr-8 ml-72 my-20'>
+            <div className='mr-8 ml-8 md:ml-72 my-20'>
                 <Outlet />
             </div>
         </section>
