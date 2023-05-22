@@ -1,9 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from '../../../Components/Loading';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddMovie = () => {
+    const [addMovieLoading, setAddMovieLoading] = useState(false);
+    const url = `https://api.imgbb.com/1/upload?key=ee207df4d4ece17d8fc4767557525c84`;
+    const navigate = useNavigate();
     const { data: categories, isLoading } = useQuery({
         queryKey: ["/categories/list"],
         queryFn: async () => {
@@ -14,10 +19,55 @@ const AddMovie = () => {
     })
     const { register, handleSubmit, formState: { errors } } = useForm();
     const handleAddMovie = data => {
-        console.log(data);
+        setAddMovieLoading(true);
+        const image = data.photo[0];
+        const formdata = new FormData();
+        formdata.append("image", image);
+        fetch(`${url}`, {
+            method: "POST",
+            body: formdata
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData);
+                const newMovie = {
+                    title: data.title,
+                    banner: imgData.data.url,
+                    category: data.category,
+                    description: data.description,
+                    trailerLink: data.trailerLink,
+                    duration: data.duration,
+                    releaseDate: data.releaseDate,
+                    actors: data.actor.split(",")
+                }
+                // posting the new movie to the db
+                fetch(`http://localhost:5000/movies/addmovie`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(newMovie)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        setAddMovieLoading(false)
+                        if (data.acknowledged) {
+                            toast.success("Successfully posted a new Movie");
+                            navigate("/admin/dashboard/movies/all");
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        toast.error("Failed")
+                    })
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
-    if (isLoading) {
+    if (isLoading || addMovieLoading) {
         return <Loading />
     }
 
@@ -28,19 +78,19 @@ const AddMovie = () => {
                 <div class="relative z-0 w-full mb-6 group">
                     <input {...register("title", {
                         required: "Title is required"
-                    })} type="text" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    })} type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_email" className={`${errors.title ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Title</label>
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
                     <input {...register("description", {
                         required: "Description is required"
-                    })} type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    })} type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_password" className={`${errors.description ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Description</label>
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
                     <input {...register("actor", {
                         required: "Actor name is required"
-                    })} type="text" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    })} type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_repeat_password" className={`${errors.actor ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Actors</label>
                 </div>
                 <div class="grid md:grid-cols-2 md:gap-6">
@@ -57,7 +107,7 @@ const AddMovie = () => {
                     <div class="relative z-0 w-full mb-6 group">
                         <input {...register("duration", {
                             required: "Duration is required"
-                        })} type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        })} type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label for="floating_last_name" className={`${errors.duration ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Duration in Hours</label>
                     </div>
                 </div>
@@ -65,14 +115,14 @@ const AddMovie = () => {
                     <div class="relative z-0 w-full mb-6 group">
                         <input {...register("trailerLink", {
                             required: "Trailer Link is required"
-                        })} type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                        })} type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                         <label for="floating_first_name" className={`${errors.trailerLink ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Trailer Link</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group">
                         <input {...register("releaseDate", {
                             required: "Date must be selected"
-                        })} type="date" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Duration in Hours</label>
+                        })} type="date" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Release Date</label>
                     </div>
                 </div>
                 <div className="flex items-center justify-center w-full mb-6">
