@@ -7,7 +7,7 @@ const TopRatedMovies = () => {
     const { data: movies, isLoading } = useQuery({
         queryKey: ['movies/all'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/movies/all`);
+            const res = await fetch(`http://localhost:5000/movies/toprated?limit=4`);
             const data = await res.json();
             console.log(data);
             return data;

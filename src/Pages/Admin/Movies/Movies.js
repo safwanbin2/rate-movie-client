@@ -4,7 +4,7 @@ import Loading from '../../../Components/Loading';
 import MovieCard from './MovieCard';
 
 const Movies = () => {
-    const { data: movies, isLoading } = useQuery({
+    const { data: movies, isLoading, refetch } = useQuery({
         queryKey: ["/movies/all"],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/movies/all`);
@@ -25,6 +25,7 @@ const Movies = () => {
                     movies.map(movie => <MovieCard
                         key={movie._id}
                         movie={movie}
+                        refetch={refetch}
                     />)
                 }
             </div>
