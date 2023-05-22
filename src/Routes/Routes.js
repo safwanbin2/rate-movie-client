@@ -12,6 +12,7 @@ import AdminLayout from "../Layouts/AdminLayout";
 import Admins from "../Pages/Admin/Users/Admins";
 import Fans from "../Pages/Admin/Users/Fans";
 import Movies from "../Pages/Admin/Movies/Movies";
+import AddMovie from "../Pages/Admin/AddMovie/AddMovie";
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
             {
                 path: "/admin/dashboard/movies/all",
                 element: <Movies />
+            },
+            {
+                path: "/admin/dashboard/addmovie",
+                element: <AddMovie />
             }
         ]
     }

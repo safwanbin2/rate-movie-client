@@ -9,8 +9,9 @@ const Home = () => {
       {/* banner for home */}
       <Banner
         title="Find Movie Reviews"
-        description="lorefg duigfdugfdugfdgfduig fdugfdfgdugf dgfdfu dgfuig dfigudufgdugf udgf dfudg fugud fdu fud fdu   df               dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf fddddddddddddddd"
-        photo="https://assets.mubicdn.net/images/film/252039/image-w1280.jpg?1643655668"
+        description="Movies could provide both enjoyment and stress reduction
+        Many people find watching movies both entertaining and a way to reduce stress. Watching movies can make us forget our problems is an alternative to anxiety loss. As previously said, watching movies can have a positive emotional impact."
+        photo="https://wallpapercave.com/wp/wp4500229.jpg"
       />
       {/* random movie banner */}
       <RandomMovieBanner />
