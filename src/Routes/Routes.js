@@ -13,6 +13,7 @@ import Admins from "../Pages/Admin/Users/Admins";
 import Fans from "../Pages/Admin/Users/Fans";
 import Movies from "../Pages/Admin/Movies/Movies";
 import AddMovie from "../Pages/Admin/AddMovie/AddMovie";
+import MoviesPage from "../Pages/MoviesPage/MoviesPage";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />
+            },
+            {
+                path: "/moviespage",
+                element: <MoviesPage />
             },
             {
                 path: "/login",

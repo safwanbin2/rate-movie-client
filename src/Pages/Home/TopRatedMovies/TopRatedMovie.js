@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TopRatedMovie = ({ movie }) => {
     const { title, banner, duration, category, _id, stars, reviewer } = movie;
     return (
-        <Link to={`movies/${_id}`} className='bg-cover min-h-[300px] rounded-xl flex justify-center items-end px-2 py-6' style={{ backgroundImage: `url(${banner})` }} >
+        <Link to={`/movies/${_id}`} className='bg-cover min-h-[300px] rounded-xl flex justify-start items-end px-6 py-6' style={{ backgroundImage: `url(${banner})` }} >
             <div>
                 <h2 className='text-xl text-white shadow tracking-wider uppercase'>{title}</h2>
                 <p className='text-sm shadow text-white'>Type: {category}</p>
