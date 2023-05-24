@@ -39,7 +39,7 @@ const Movie = () => {
                 <div className='my-6'>
                     <h2 className='my-2 tracking-wider text-3xl font-semibold'>Title: {title}</h2>
                     <h3 className='my-2 tracking-wider'>Category: {category}</h3>
-                    <h3 className='my-2 tracking-wider'>Duration: {duration}</h3>
+                    <h3 className='my-2 tracking-wider'>Duration: {duration} Hours</h3>
                     <h3 className='my-2 tracking-wider'>releaseDate: {releaseDate}</h3>
                     <h3 className='my-2 tracking-wider'>Actor: {actors.map(actor => `${actor}, `)}</h3>
                     <iframe className='w-full h-[400px] my-6' src={trailerLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>

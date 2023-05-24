@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import UseIsAdmin from '../../Hooks/useIsAdmin';
+import film from '../../Assets/film.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenSub, setIsOpenSub] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const isAdmin = UseIsAdmin(user?.email);
-    
+
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     }
@@ -65,7 +66,9 @@ const Navbar = () => {
         <nav className="bg-white border-gray-200 shadow-lg dark:bg-gray-900 relative">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to='/' className="flex items-center">
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap">rateMovie</span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap">rateM</span>
+                    <img className='w-6 h-6' src={film} alt="" />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap">vie</span>
                 </Link>
                 <div className="flex items-center md:order-2">
                     <button onClick={toggleSub} type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
