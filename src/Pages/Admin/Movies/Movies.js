@@ -20,7 +20,7 @@ const Movies = () => {
     return (
         <div>
             <h2 className='text-xl font-semibold my-6'>this is movies all : </h2>
-            <div className='grid grid-cols-3 gap-8'>
+            <div className='md:grid grid-cols-3 gap-8'>
                 {
                     movies.map(movie => <MovieCard
                         key={movie._id}

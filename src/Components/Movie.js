@@ -33,7 +33,7 @@ const Movie = () => {
         return <Loading />
     }
     return (
-        <section className='w-[90%] mx-auto grid gap-8 mt-8 mb-20' style={{ gridTemplateColumns: "5fr 2fr" }}>
+        <section className='w-[90%] mx-auto md:grid gap-8 mt-8 mb-20' style={{ gridTemplateColumns: "5fr 2fr" }}>
             <div className=''>
                 <img className='w-full h-[500px]' src={banner} alt="" />
                 <div className='my-6'>

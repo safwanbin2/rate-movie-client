@@ -21,7 +21,7 @@ const TopRatedMovies = () => {
     return (
         <div className='w-[92%] mx-auto'>
             <h2 className='text-3xl uppercase underline underline-offset-4 text-center my-12 tracking-wider'>Top Rated Movies</h2>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid md:grid-cols-4 gap-4'>
                 {
                     movies.map(movie => <TopRatedMovie
                         key={movie._id}

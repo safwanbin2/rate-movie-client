@@ -19,10 +19,10 @@ const RandomMovieBanner = () => {
     return (
         <div>
             <h2 className='text-3xl uppercase underline underline-offset-4 text-center my-12 tracking-wider'>Today's Pick</h2>
-            <div className='grid overflow-hidden' style={{ gridTemplateColumns: "2fr 3fr" }}>
+            <div className='md:grid overflow-hidden' style={{ gridTemplateColumns: "2fr 3fr" }}>
                 <div className='relative'>
                     <img src={movie.banner} alt="" />
-                    <div className='absolute top-[30%] right-[10%] text-end'>
+                    <div className='absolute bottom-1 right-1 md:top-[30%] md:right-[10%] text-end'>
                         <h2 className='text-3xl text-white shadow tracking-wider uppercase'>{movie.title}</h2>
                         <p className='text-2xl shadow text-white'>Type: {movie.category}</p>
                         <p className='text-2xl shadow text-white'>Duration: {movie.duration}hours</p>
@@ -31,7 +31,7 @@ const RandomMovieBanner = () => {
                             <p className='text-white shadow '> - {movie.stars ? movie.stars/movie.reviewer : "No rating yet"}</p>
                         </div>
                         <div className='my-6'>
-                            <Link to={`/movies/${movie._id}`} className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-8 py-4 text-center my-4 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">View Details</Link>
+                            <Link to={`/movies/${movie._id}`} className='bg-white px-6 py-3 rounded-full border-2 border-gray-300 font-semibold tracking-wider uppercase'>View Details</Link>
                         </div>
                     </div>
                 </div>

@@ -46,11 +46,11 @@ const Register = () => {
 
     console.log(user);
     return (
-        <section className='grid grid-cols-2 w-[90vw] mx-auto shadow-lg rounded overflow-hidden gap-6'>
+        <section className='md:grid grid-cols-2 w-[90vw] mx-auto shadow-lg rounded overflow-hidden gap-6'>
             <img src="https://tdips.uat.shakeys.solutions/LoginLayout/images/undraw_remotely_2j6y.svg" alt="" />
-            <div className='flex items-center py-8'>
-                <form onSubmit={handleSubmit(handleCreateAccount)} className='w-[90%]'>
-                    <h2 className=' text-2xl font-bold uppercase'>Register Now!</h2>
+            <div className='flex items-center py-8 px-3'>
+                <form onSubmit={handleSubmit(handleCreateAccount)} className='w-full md:w-[90%]'>
+                    <h2 className='py-4 text-2xl font-bold uppercase'>Register Now!</h2>
                     <div className="relative z-0 w-full mb-6 group">
                         <input {...register('email', {
                             // required: "Email is required"

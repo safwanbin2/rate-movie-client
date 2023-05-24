@@ -66,8 +66,8 @@ const Review = ({ review, setRefetch, refetch }) => {
                     showStars(stars).map(star => star)
                 }
             </div>
-            <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed on : <time>{reviewDate.slice(0, 10)}</time></p></footer>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">{comment}</p>
+            <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400"><>Reviewed on : <time>{reviewDate.slice(0, 10)}</time></></footer>
+            <p className="mb-2 text-white">{comment}</p>
             <aside>
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{review?.foundHelpful.length ? `${review.foundHelpful.length} people found this helpful` : ``}</p>
                 <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">

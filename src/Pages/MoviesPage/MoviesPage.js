@@ -35,8 +35,8 @@ const MoviesPage = () => {
     }
     console.log(movies);
     return (
-        <section className='grid w-[92%] mx-auto py-6' style={{ gridTemplateColumns: "5fr 2fr" }}>
-            <div className='py-3 pr-6'>
+        <section className='flex flex-col-reverse md:grid w-[92%] mx-auto py-6' style={{ gridTemplateColumns: "5fr 2fr" }}>
+            <div className='py-3 md:pr-6'>
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
@@ -59,13 +59,13 @@ const MoviesPage = () => {
             <div className='py-2'>
                 <h2 className='text-xl font-semibold tracking-wider'>filter: </h2>
                 <div>
-                    <button onClick={() => setCategoryText("")} className='px-6 py-2 bg-gray-100 rounded-full uppercase tracking-wider shadow-inner m-1'>all</button>
+                    <button onClick={() => setCategoryText("")} className='text-xs px-6 py-2 focus:bg-gray-400 bg-gray-100 rounded-full uppercase tracking-wider shadow-inner m-1'>all</button>
                     {
                         categories.map(cat => <button
                             onClick={() => setCategoryText(cat.title)}
                             key={cat._id}
                             cat={cat}
-                            className='px-6 py-2 bg-gray-100 rounded-full uppercase tracking-wider shadow-inner m-1'
+                            className='text-xs px-6 py-2 bg-gray-100 rounded-full uppercase tracking-wider shadow-inner m-1 focus:bg-gray-400'
                         >{cat.title}</button>)
                     }
                 </div>

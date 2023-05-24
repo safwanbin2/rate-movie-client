@@ -43,10 +43,10 @@ const Login = () => {
     }
 
     return (
-        <section className='grid grid-cols-2 w-[90vw] mx-auto shadow-lg rounded overflow-hidden gap-6'>
+        <section className='md:grid grid-cols-2 w-[90vw] mx-auto shadow-lg rounded overflow-hidden gap-6'>
             <img src="https://tdips.uat.shakeys.solutions/LoginLayout/images/undraw_remotely_2j6y.svg" alt="" />
-            <div className='flex items-center py-8'>
-                <form onSubmit={handleSubmit(handleLogInWithEmail)} className='w-[90%]'>
+            <div className='flex items-center py-8 px-3'>
+                <form onSubmit={handleSubmit(handleLogInWithEmail)} className='w-full md:w-[90%]'>
                     <h2 className=' text-2xl font-bold uppercase'>Register Now!</h2>
                     <div className="relative z-0 w-full mb-6 group">
                         <input {...register('email', {
@@ -60,7 +60,7 @@ const Login = () => {
                         })} type="password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label htmlhtmlFor="floating_password" className={`${errors.password ? "text-red-600" : "text-gray-500"} peer-focus:font-medium absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}>Password</label>
                     </div>
-                    <button onClick={handleLogInWithGoogle} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 mb-6">
+                    <button onClick={handleLogInWithGoogle} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full px-2 py-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
                             <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
                         </svg>
