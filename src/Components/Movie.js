@@ -5,12 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 import Review from './Review';
 import Loading from './Loading';
 import CategoryMovieCard from './CategoryMovieCard';
+import useTitle from '../Hooks/useTitle';
 
 const Movie = () => {
     const movie = useLoaderData();
     const { actors, banner, category, description, duration, releaseDate, title, trailerLink, _id } = movie;
     const [reviews, setReviews] = useState({});
     const [refetch, setRefetch] = useState(false);
+    useTitle("rm-Movie")
     
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)

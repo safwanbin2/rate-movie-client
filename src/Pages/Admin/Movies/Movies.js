@@ -2,8 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from '../../../Components/Loading';
 import MovieCard from './MovieCard';
+import useTitle from '../../../Hooks/useTitle';
 
 const Movies = () => {
+    useTitle("rm-Movies")
     const { data: movies, isLoading, refetch } = useQuery({
         queryKey: ["/movies/all"],
         queryFn: async () => {

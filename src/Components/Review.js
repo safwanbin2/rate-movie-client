@@ -71,10 +71,10 @@ const Review = ({ review, setRefetch, refetch }) => {
             <aside>
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{review?.foundHelpful.length ? `${review.foundHelpful.length} people found this helpful` : ``}</p>
                 <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
-                    <button onClick={() => handleHelpful(_id, user?.email)} className={`${review?.foundHelpful.includes(user?.email) ? "bg-blue-700 hover:bg-blue-600 text-white border-white" : "bg-white text-gray-900 hover:bg-gray-100 border-gray-300"} border  focus:outline-none  focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700`}>Helpful</button>
+                    <button onClick={() => handleHelpful(_id, user?.email)} className={`${review?.foundHelpful.includes(user?.email) ? "bg-blue-700 hover:bg-blue-600 text-white border-white" : "bg-white text-gray-900 hover:bg-gray-100 border-gray-300"} border  focus:outline-none  focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-xs px-2 py-1 text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700`}>Helpful</button>
                     {
                         isAdmin && <div className='pl-2 flex items-center'>
-                            <button onClick={() => handleDeleteReview(_id)} type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-2 py-1 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete Review</button>
+                            <button onClick={() => handleDeleteReview(_id)} type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete Review</button>
                         </div>
                     }
                 </div>

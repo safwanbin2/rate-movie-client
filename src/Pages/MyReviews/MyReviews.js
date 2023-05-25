@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../../Components/Loading';
 import MyReview from './MyReview';
+import useTitle from '../../Hooks/useTitle';
 
 const MyReviews = () => {
+    useTitle("rm-Reviews")
     const { user } = useContext(AuthContext);
     const { data: reviews, isLoading, refetch } = useQuery({
         queryKey: [user?.email, "myreviews"],

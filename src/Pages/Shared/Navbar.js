@@ -35,13 +35,13 @@ const Navbar = () => {
 
     const navLinks = <>
         <li>
-            <Link to='/moviespage' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 md:border-b-0">Movies</Link>
+            <Link to='/moviespage' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">Movies</Link>
         </li>
         <li>
-            <Link to='/' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 md:border-b-0">Pricing</Link>
+            <Link to='/' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">Pricing</Link>
         </li>
         <li>
-            <Link to='/about' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 md:border-b-0">About</Link>
+            <Link to='/about' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">About</Link>
         </li>
         <li>
             <Link to='/contact' className="block py-2 pl-3 pr-4 text-white focus:border-b-2 ">Contact</Link>
@@ -65,7 +65,7 @@ const Navbar = () => {
     return (
         <nav className="bg-base border-gray-200 shadow-lg dark:bg-gray-900 relative">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to='/' className="flex items-center">
+                <Link to='/' className="flex items-center tracking-wider">
                     <span className="self-center text-2xl font-semibold whitespace-nowrap">rateM</span>
                     <img className='w-6 h-6' src={film} alt="" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap">vie</span>
@@ -85,10 +85,10 @@ const Navbar = () => {
                                 user ? subNavLinks :
                                     <>
                                         <li>
-                                            <Link to='/login' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Login</Link>
+                                            <Link to='/login' className="block px-4 py-2 text-sm text-white hover:bg-gray-600">Login</Link>
                                         </li>
                                         <li>
-                                            <Link to='/register' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Register</Link>
+                                            <Link to='/register' className="block px-4 py-2 text-sm text-white hover:bg-gray-600">Register</Link>
                                         </li>
                                     </>
                             }

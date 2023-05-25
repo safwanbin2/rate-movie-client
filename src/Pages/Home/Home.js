@@ -2,8 +2,10 @@ import React from 'react';
 import Banner from './Banner';
 import RandomMovieBanner from './RandomMovieBanner';
 import TopRatedMovies from './TopRatedMovies/TopRatedMovies';
+import useTitle from '../../Hooks/useTitle';
 
 const Home = () => {
+  useTitle("rm-Home")
   return (
     <section className='w-full '>
       {/* banner for home */}

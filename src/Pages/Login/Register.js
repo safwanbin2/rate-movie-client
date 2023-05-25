@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import saveUser from '../../Hooks/saveUser';
+import useTitle from '../../Hooks/useTitle';
 
 const Register = () => {
+    useTitle("rm-Register")
     const url = `https://api.imgbb.com/1/upload?key=ee207df4d4ece17d8fc4767557525c84`;
     const { createUser, user, isLoading, setIsLoading, update } = useContext(AuthContext);
     const navigate = useNavigate();

@@ -4,12 +4,14 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import saveUser from '../../Hooks/saveUser';
+import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
     const { logInWithEmail, logInWithGoogle, isLoading } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const date = new Date();
+    useTitle("rm-Login")
 
     // logging in using email and password from handle submit
     const handleLogInWithEmail = data => {

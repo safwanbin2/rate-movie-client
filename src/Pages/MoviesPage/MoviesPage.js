@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Components/Loading';
 import TopRatedMovie from '../Home/TopRatedMovies/TopRatedMovie';
+import useTitle from '../../Hooks/useTitle';
 
 const MoviesPage = () => {
     const [searchText, setSearchText] = useState("");
     const [categoryText, setCategoryText] = useState("");
+    useTitle("rm-Movies");
     const { register, handleSubmit, formState: { errors } } = useForm();
     const handleFormSubmit = data => {
         setSearchText(data.search);
@@ -33,7 +35,7 @@ const MoviesPage = () => {
     if (isLoading || loading) {
         return <Loading />
     }
-    console.log(movies);
+    
     return (
         <section className='flex flex-col-reverse md:grid w-[92%] mx-auto py-6' style={{ gridTemplateColumns: "5fr 2fr" }}>
             <div className='py-3 md:pr-6'>

@@ -2,8 +2,10 @@ import React from 'react';
 import TableUser from '../../../Components/AdminComponents/TableUser';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../Components/Loading';
+import useTitle from '../../../Hooks/useTitle';
 
 const Admins = () => {
+    useTitle("rm-Admins")
     const { data: admins, isLoading } = useQuery({
         queryKey: ["role"],
         queryFn: async () => {

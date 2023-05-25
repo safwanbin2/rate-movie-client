@@ -4,8 +4,10 @@ import { useForm } from 'react-hook-form';
 import Loading from '../../../Components/Loading';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddMovie = () => {
+    useTitle("rm-Addmovie")
     const [addMovieLoading, setAddMovieLoading] = useState(false);
     const url = `https://api.imgbb.com/1/upload?key=ee207df4d4ece17d8fc4767557525c84`;
     const navigate = useNavigate();

@@ -2,7 +2,10 @@ import React from 'react';
 import TableUser from '../../../Components/AdminComponents/TableUser';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../Components/Loading';
+import useTitle from '../../../Hooks/useTitle';
+
 const Fans = () => {
+    useTitle("rm-Fans")
     const { data: fans, isLoading } = useQuery({
         queryKey: ["role"],
         queryFn: async () => {
