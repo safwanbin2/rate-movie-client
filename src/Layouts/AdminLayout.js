@@ -3,7 +3,8 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { RiAdminFill } from 'react-icons/ri';
-import { GoReport, GoSignOut } from 'react-icons/go';
+import {  GoSignOut } from 'react-icons/go';
+import { AiOutlineMail } from 'react-icons/ai';
 import { MdCreateNewFolder, MdLocalMovies } from 'react-icons/md';
 import film from '../Assets/film.png';
 
@@ -92,39 +93,38 @@ const AdminLayout = () => {
                             </a>
                         </li> */}
                         <li>
-                            <Link to="/admin/dashboard/admins" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
+                            <Link to="/admin/dashboard/messages" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
+                                <AiOutlineMail className='flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900' />
+                                <span class="flex-1 ml-3 whitespace-nowrap">Messages</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/admin/dashboard/admins" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
                                 <RiAdminFill className='flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900' />
                                 <span class="flex-1 ml-3 whitespace-nowrap">Admins</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/dashboard/fans" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
-                                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                            <Link to="/admin/dashboard/fans" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
+                                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                                 <span class="flex-1 ml-3 whitespace-nowrap">Fans</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
-                                <GoReport className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' />
-                                <span class="flex-1 ml-3 whitespace-nowrap">Reports</span>
-                                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="movies/all" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
-                                <MdLocalMovies className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' />
+                            <Link to="movies/all" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
+                                <MdLocalMovies className='flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900' />
                                 <span class="flex-1 ml-3 whitespace-nowrap">Movies</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/dashboard/addmovie" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
-                                <MdCreateNewFolder className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' />
+                            <Link to="/admin/dashboard/addmovie" class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
+                                <MdCreateNewFolder className='flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900' />
                                 <span class="flex-1 ml-3 whitespace-nowrap">New Movie</span>
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={handleLogOut} class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2">
-                                <GoSignOut className='flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' />
+                            <Link onClick={handleLogOut} class="flex items-center p-2 text-white rounded-lg  hover:bg-gray-600 focus:border-b-2 border-b-2 border-transparent focus:border-white">
+                                <GoSignOut className='flex-shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-900' />
                                 <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
                             </Link>
                         </li>

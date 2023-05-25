@@ -14,6 +14,7 @@ import Fans from "../Pages/Admin/Users/Fans";
 import Movies from "../Pages/Admin/Movies/Movies";
 import AddMovie from "../Pages/Admin/AddMovie/AddMovie";
 import MoviesPage from "../Pages/MoviesPage/MoviesPage";
+import Messages from "../Pages/Admin/Messages/Messages";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
             {
                 path: "/admin/dashboard/addmovie",
                 element: <AddMovie />
+            },
+            {
+                path: "/admin/dashboard/messages",
+                element: <Messages />
             }
         ]
     }
