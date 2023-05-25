@@ -27,7 +27,7 @@ const MovieCard = ({ movie, refetch }) => {
     }
 
     return (
-        <div className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-4 md:my-0">
+        <div className="relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-4 md:my-0">
             <Link to={`/movies/${_id}`}>
                 <img className="rounded-t-lg h-[150px] w-full" src={banner} alt="" />
             </Link>

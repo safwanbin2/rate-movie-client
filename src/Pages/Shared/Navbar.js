@@ -49,14 +49,15 @@ const Navbar = () => {
     </>
 
     const subNavLinks = <>
-        {isAdmin && <li>
-            <Link to='/admin/dashboard' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Admin Dashboard</Link>
-        </li>}
-        {isAdmin || <li>
-            <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
-        </li>}
+        {
+            isAdmin ? <li>
+                <Link to='/admin/dashboard' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Admin Dashboard</Link>
+            </li> : <li>
+                <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
+            </li>
+        }
         <li>
-            <Link to='/' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Settings</Link>
+            <Link to='/profile' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Profile</Link>
         </li>
         <li>
             <Link onClick={handleLogOut} className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Logout</Link>

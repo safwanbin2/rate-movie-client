@@ -15,6 +15,7 @@ import Movies from "../Pages/Admin/Movies/Movies";
 import AddMovie from "../Pages/Admin/AddMovie/AddMovie";
 import MoviesPage from "../Pages/MoviesPage/MoviesPage";
 import Messages from "../Pages/Admin/Messages/Messages";
+import MyProfile from "../Pages/MyProfile/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: "/myreviews",
                 element: <MyReviews />
+            },
+            {
+                path: "/profile",
+                element: <MyProfile />
             }
         ]
     },
