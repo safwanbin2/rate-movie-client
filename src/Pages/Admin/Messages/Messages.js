@@ -4,7 +4,7 @@ import Loading from '../../../Components/Loading';
 import Message from './Message';
 
 const Messages = () => {
-    const { data: messages, isLoading } = useQuery({
+    const { data: messages, refetch, isLoading } = useQuery({
         queryKey: ["/messages"],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/messages`);
@@ -20,11 +20,12 @@ const Messages = () => {
     return (
         <div>
             <h2 className='text-xl mb-6'>Messages : </h2>
-            <div  className='md:divide-y'>
+            <div className='md:divide-y'>
                 {
                     messages.map(message => <Message
                         key={message._id}
                         message={message}
+                        refetch={refetch}
                     />)
                 }
             </div>

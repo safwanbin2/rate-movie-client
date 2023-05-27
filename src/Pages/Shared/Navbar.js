@@ -4,6 +4,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import UseIsAdmin from '../../Hooks/useIsAdmin';
 import film from '../../Assets/film.png';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,14 @@ const Navbar = () => {
         setIsOpenSub(!isOpenSub);
     }
 
+    const { data: notification } = useQuery({
+        queryKey: [user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/messages/updateNotification?email=${user?.email}`)
+            const data = await res.json();
+            return data;
+        }
+    })
     const handleLogOut = () => {
         const consent = window.confirm("Are you sure you want to logout?");
         if (consent) {
@@ -35,16 +44,16 @@ const Navbar = () => {
 
     const navLinks = <>
         <li>
-            <Link to='/moviespage' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">Movies</Link>
+            <Link to='/moviespage' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white tracking-wider">Movies</Link>
         </li>
         <li>
-            <Link to='/' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">Pricing</Link>
+            <Link to='/topmovies' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white tracking-wider">Top-50 Movies</Link>
         </li>
         <li>
-            <Link to='/about' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white ">About</Link>
+            <Link to='/about' className="block py-2 pl-3 pr-4 text-white border-b-2 focus:border-b-2 border-transparent focus:border-white tracking-wider">About</Link>
         </li>
         <li>
-            <Link to='/contact' className="block py-2 pl-3 pr-4 text-white focus:border-b-2 ">Contact</Link>
+            <Link to='/contact' className="block py-2 pl-3 pr-4 text-white focus:border-b-2 tracking-wider">Contact</Link>
         </li>
     </>
 
@@ -52,9 +61,16 @@ const Navbar = () => {
         {
             isAdmin ? <li>
                 <Link to='/admin/dashboard' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Admin Dashboard</Link>
-            </li> : <li>
-                <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
-            </li>
+            </li> : <>
+                <li>
+                    <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
+                </li>
+                <li>
+                    <Link to='/messages/notification' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Notifications <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                        {notification.length}
+                    </span></Link>
+                </li>
+            </>
         }
         <li>
             <Link to='/profile' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Profile</Link>

@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 
 const CreatePost = ({ movie, refetch, setRefetch }) => {
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const date = new Date();
     const handleCreatePost = (data) => {
         const review = {
@@ -34,9 +34,14 @@ const CreatePost = ({ movie, refetch, setRefetch }) => {
                 if (data.acknowledged) {
                     setRefetch(!refetch)
                     return toast.success("Review added successfully");
+
                 }
                 toast.error("failed to post the review");
             })
+            .catch(err => {
+                console.error(err);
+            })
+        reset();
     }
     return (
         <form onSubmit={handleSubmit(handleCreatePost)}>

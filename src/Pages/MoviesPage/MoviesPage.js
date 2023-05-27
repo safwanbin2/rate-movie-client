@@ -9,7 +9,7 @@ const MoviesPage = () => {
     const [searchText, setSearchText] = useState("");
     const [categoryText, setCategoryText] = useState("");
     useTitle("rm-Movies");
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register ,handleSubmit, formState: { errors } } = useForm();
     const handleFormSubmit = data => {
         setSearchText(data.search);
     }
