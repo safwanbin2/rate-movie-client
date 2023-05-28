@@ -7,7 +7,7 @@ const RandomMovieBanner = () => {
     const { data: movie, isLoading } = useQuery({
         queryKey: ['movies/random'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/movies/movie/random`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies/movie/random`);
             const data = await res.json();
             return data;
         }

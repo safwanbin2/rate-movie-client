@@ -9,7 +9,7 @@ const Fans = () => {
     const { data: fans, isLoading } = useQuery({
         queryKey: ["role"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/list?role=fan`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/users/list?role=fan`);
             const data = await res.json();
             return data;
         }

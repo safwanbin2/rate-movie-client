@@ -14,7 +14,7 @@ const AddMovie = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ["/categories/list"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categories/list`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/categories/list`);
             const data = await res.json();
             return data;
         }
@@ -43,7 +43,7 @@ const AddMovie = () => {
                     actors: data.actor.split(",")
                 }
                 // posting the new movie to the db
-                fetch(`http://localhost:5000/movies/addmovie`, {
+                fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies/addmovie`, {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

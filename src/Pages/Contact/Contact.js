@@ -17,7 +17,7 @@ const Contact = () => {
             date: d,
             isRead: false
         }
-        fetch(`http://localhost:5000/messages`, {
+        fetch(`https://rate-movie-server-safwanbin2.vercel.app/messages`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

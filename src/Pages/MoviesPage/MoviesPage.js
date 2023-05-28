@@ -9,7 +9,7 @@ const MoviesPage = () => {
     const [searchText, setSearchText] = useState("");
     const [categoryText, setCategoryText] = useState("");
     useTitle("rm-Movies");
-    const { register ,handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const handleFormSubmit = data => {
         setSearchText(data.search);
     }
@@ -17,7 +17,7 @@ const MoviesPage = () => {
     const { data: movies, isLoading } = useQuery({
         queryKey: [searchText, "/movies/find", categoryText],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/movies/find?q=${searchText}&category=${categoryText}`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies/find?q=${searchText}&category=${categoryText}`);
             const data = await res.json();
             return data;
         }
@@ -26,16 +26,12 @@ const MoviesPage = () => {
     const { data: categories, isLoading: loading } = useQuery({
         queryKey: ["/categories/list"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categories/list`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/categories/list`);
             const data = await res.json();
             return data;
         }
     })
 
-    if (isLoading || loading) {
-        return <Loading />
-    }
-    
     return (
         <section className='flex flex-col-reverse md:grid w-[92%] mx-auto py-6' style={{ gridTemplateColumns: "5fr 2fr" }}>
             <div className='py-3 md:pr-6'>
@@ -51,19 +47,21 @@ const MoviesPage = () => {
                         <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
                 </form>
-                <div className='grid grid-cols-2 gap-3 my-3'>
-                    {movies.map(movie => <TopRatedMovie
-                        key={movie._id}
-                        movie={movie}
-                    />)}
-                </div>
+                {isLoading ? <Loading /> :
+                    <div className='grid grid-cols-2 gap-3 my-3'>
+                        {movies.map(movie => <TopRatedMovie
+                            key={movie._id}
+                            movie={movie}
+                        />)}
+                    </div>
+                }
             </div>
             <div className='py-2'>
                 <h2 className='text-xl font-semibold tracking-wider'>filter: </h2>
                 <div>
                     <button onClick={() => setCategoryText("")} className='text-xs px-6 py-2 focus:bg-gray-400 bg-gray-100 rounded-full uppercase tracking-wider shadow-inner m-1'>all</button>
                     {
-                        categories.map(cat => <button
+                        loading ? <p className='text-center'>Loading...</p> : categories.map(cat => <button
                             onClick={() => setCategoryText(cat.title)}
                             key={cat._id}
                             cat={cat}

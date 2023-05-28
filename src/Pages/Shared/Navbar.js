@@ -23,7 +23,7 @@ const Navbar = () => {
     const { data: notification, isLoading } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/messages/updateNotification?email=${user?.email}`)
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/messages/updateNotification?email=${user?.email}`)
             const data = await res.json();
             return data;
         }

@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/movies/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+                loader: ({ params }) => fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies/${params.id}`),
                 element: <PrivateRoute><Movie /></PrivateRoute>,
             },
             {

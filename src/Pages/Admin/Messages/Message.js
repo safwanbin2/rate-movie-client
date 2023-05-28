@@ -5,7 +5,7 @@ const Message = ({ message, refetch }) => {
     const { date, message: body, isRead, senderEmail, senderName, senderPhoto, _id } = message;
     console.log(message)
     const handleIsRead = () => {
-        fetch(`http://localhost:5000/messages/updateStatus?id=${_id}`, {
+        fetch(`https://rate-movie-server-safwanbin2.vercel.app/messages/updateStatus?id=${_id}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json"

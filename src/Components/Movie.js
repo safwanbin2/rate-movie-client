@@ -15,7 +15,7 @@ const Movie = () => {
     useTitle("rm-Movie")
     
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://rate-movie-server-safwanbin2.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -25,7 +25,7 @@ const Movie = () => {
     const { data: categoryMovies, isLoading } = useQuery({
         queryKey: [category, "movies"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/movies?category=${category}`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies?category=${category}`);
             const data = await res.json();
             return data;
         }

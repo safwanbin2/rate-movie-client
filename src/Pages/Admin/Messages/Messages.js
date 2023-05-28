@@ -7,7 +7,7 @@ const Messages = () => {
     const { data: messages, refetch, isLoading } = useQuery({
         queryKey: ["/messages"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/messages`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/messages`);
             const data = await res.json();
             return data;
         }

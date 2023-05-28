@@ -11,7 +11,7 @@ const MyReviews = () => {
     const { data: reviews, isLoading, refetch } = useQuery({
         queryKey: [user?.email, "myreviews"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myreviews?email=${user?.email}`);
+            const res = await fetch(`https://rate-movie-server-safwanbin2.vercel.app/myreviews?email=${user?.email}`);
             const data = await res.json();
             return data;
         }

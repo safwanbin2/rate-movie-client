@@ -9,7 +9,7 @@ const MovieCard = ({ movie, refetch }) => {
     const handleDeleteMovie = id => {
         const consent = window.confirm("Do you want to delete the movie?");
         if (consent) {
-            fetch(`http://localhost:5000/movies/deletemovie?id=${id}`, {
+            fetch(`https://rate-movie-server-safwanbin2.vercel.app/movies/deletemovie?id=${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

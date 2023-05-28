@@ -6,7 +6,7 @@ const saveUser = (email, name, photo, role, date) => {
         "role": role,
         "createDate": date
     }
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://rate-movie-server-safwanbin2.vercel.app/users`, {
         method: "POST",
         headers: {
             "content-type": "application/json"

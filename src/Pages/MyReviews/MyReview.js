@@ -9,7 +9,7 @@ const MyReview = ({ review, refetch }) => {
     const handleDeleteReview = id => {
         const consent = window.confirm("Are you sure you want to delete your review?");
         if (consent) {
-            fetch(`http://localhost:5000/reviews/delete?id=${id}`, {
+            fetch(`https://rate-movie-server-safwanbin2.vercel.app/reviews/delete?id=${id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())

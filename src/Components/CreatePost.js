@@ -21,7 +21,7 @@ const CreatePost = ({ movie, refetch, setRefetch }) => {
             "userEmail": user?.email,
             "foundHelpful": []
         }
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://rate-movie-server-safwanbin2.vercel.app/reviews`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

@@ -17,7 +17,7 @@ const Review = ({ review, setRefetch, refetch }) => {
     }
 
     const handleHelpful = (id, email) => {
-        fetch(`http://localhost:5000/reviews/foundHelpful?id=${id}&email=${email}`, {
+        fetch(`https://rate-movie-server-safwanbin2.vercel.app/reviews/foundHelpful?id=${id}&email=${email}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const Review = ({ review, setRefetch, refetch }) => {
     const handleDeleteReview = id => {
         const consent = window.confirm("Are you sure you want to delete the review?");
         if (consent) {
-            fetch(`http://localhost:5000/reviews/delete?id=${id}`, {
+            fetch(`https://rate-movie-server-safwanbin2.vercel.app/reviews/delete?id=${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
