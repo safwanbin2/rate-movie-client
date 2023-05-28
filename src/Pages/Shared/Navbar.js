@@ -10,7 +10,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenSub, setIsOpenSub] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    const isAdmin = UseIsAdmin(user?.email);
+    const [isAdmin, isAdminLoading] = UseIsAdmin(user?.email);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
@@ -58,13 +58,13 @@ const Navbar = () => {
     </>
 
     const subNavLinks = <>
+        <li>
+            <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
+        </li>
         {
             isAdmin ? <li>
                 <Link to='/admin/dashboard' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Admin Dashboard</Link>
             </li> : <>
-                <li>
-                    <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
-                </li>
                 {
                     isLoading ? <li>
                         <Link to='' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Notifications <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">

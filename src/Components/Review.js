@@ -6,7 +6,7 @@ import UseIsAdmin from '../Hooks/useIsAdmin';
 const Review = ({ review, setRefetch, refetch }) => {
     const { user } = useContext(AuthContext);
     const { comment, reviewDate, stars, userName, userEmail, userPhoto, _id } = review;
-    const isAdmin = UseIsAdmin(user?.email);
+    const [isAdmin, isAdminLoading] = UseIsAdmin(user?.email);
 
     const showStars = amount => {
         let arr = [];

@@ -19,6 +19,7 @@ import MyProfile from "../Pages/MyProfile/MyProfile";
 import TopMovies from "../Pages/TopMovies/TopMovies";
 import MessagesNotification from "../Pages/Messages/MessagesNotification";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -75,7 +76,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/admin/dashboard",
-        element: <AdminLayout />,
+        element: <AdminRoute><AdminLayout /></AdminRoute>,
         errorElement: <ErrorPage />,
         children: [
             {
