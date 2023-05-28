@@ -17,6 +17,8 @@ import MoviesPage from "../Pages/MoviesPage/MoviesPage";
 import Messages from "../Pages/Admin/Messages/Messages";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import TopMovies from "../Pages/TopMovies/TopMovies";
+import MessagesNotification from "../Pages/Messages/MessagesNotification";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +53,7 @@ export const router = createBrowserRouter([
             {
                 path: "/movies/:id",
                 loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
-                element: <Movie />,
+                element: <PrivateRoute><Movie /></PrivateRoute>,
             },
             {
                 path: "/myreviews",
@@ -64,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path: "/topmovies",
                 element: <TopMovies />
+            },
+            {
+                path: "/messages/notification",
+                element: <MessagesNotification />
             }
         ]
     },

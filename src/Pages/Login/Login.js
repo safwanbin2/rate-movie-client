@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import saveUser from '../../Hooks/saveUser';
 import useTitle from '../../Hooks/useTitle';
 
@@ -10,6 +10,8 @@ const Login = () => {
     const { logInWithEmail, logInWithGoogle, isLoading } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const date = new Date();
     useTitle("rm-Login")
 
@@ -20,7 +22,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success(`Successfully logged in as ${user?.displayName}`);
-                navigate("/");
+                navigate(from, {replace: true});
             })
             .catch(err => {
                 console.error(err);
@@ -36,7 +38,7 @@ const Login = () => {
                 console.log(user);
                 toast.success(`Successfully logged in as ${user?.displayName}`);
                 saveUser(user?.email, user?.displayName, user?.photoURL, "fan", date);
-                navigate("/");
+                navigate(from, {replace: true});
             })
             .catch(err => {
                 console.error(err);

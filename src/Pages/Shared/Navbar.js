@@ -20,7 +20,7 @@ const Navbar = () => {
         setIsOpenSub(!isOpenSub);
     }
 
-    const { data: notification } = useQuery({
+    const { data: notification, isLoading } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/messages/updateNotification?email=${user?.email}`)
@@ -65,11 +65,18 @@ const Navbar = () => {
                 <li>
                     <Link to='/myreviews' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">My reviews</Link>
                 </li>
-                <li>
-                    <Link to='/messages/notification' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Notifications <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                        {notification.length}
-                    </span></Link>
-                </li>
+                {
+                    isLoading ? <li>
+                        <Link to='' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Notifications <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                            0
+                        </span></Link>
+                    </li> :
+                        <li>
+                            <Link to='/messages/notification' className="block px-4 py-2 text-sm text-white hover:bg-gray-600 ">Notifications <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                                {notification.notifications}
+                            </span></Link>
+                        </li>
+                }
             </>
         }
         <li>
